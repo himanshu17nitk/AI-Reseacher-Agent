@@ -1,0 +1,124 @@
+2025-07-07 11:56:11,214 - rag_api - ERROR - error:86 - DB: Failed to save document in 30.458s | User: test_user_123 | File: test_user_123_ai_document.txt
+Exception: (<class 'pymongo.errors.ServerSelectionTimeoutError'>, ServerSelectionTimeoutError("localhost:27017: [Errno 61] Connection refused (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 686b686497f26f8ab5c33f66, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 61] Connection refused (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>"), <traceback object at 0x104f507c0>)
+Traceback (most recent call last):
+  File "/Users/himanshu4.goyal/My Projects/Customer_support_chatbot/db/mongo_utils.py", line 26, in save_uploaded_document
+    result = self.docs_collection.insert_one(doc)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/collection.py", line 669, in insert_one
+    self._insert_one(
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/collection.py", line 609, in _insert_one
+    self.__database.client._retryable_write(acknowledged, _insert_command, session)
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1522, in _retryable_write
+    with self._tmp_session(session) as s:
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1840, in _tmp_session
+    s = self._ensure_session(session)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1823, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1766, in __start_session
+    self._topology._check_implicit_session_support()
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/topology.py", line 573, in _check_implicit_session_support
+    self._check_session_support()
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/topology.py", line 589, in _check_session_support
+    self._select_servers_loop(
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/topology.py", line 259, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: localhost:27017: [Errno 61] Connection refused (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 686b686497f26f8ab5c33f66, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 61] Connection refused (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+2025-07-07 11:56:11,222 - rag_api - ERROR - error:86 - ROUTER: Training process failed for user test_user_123 in 30.470s | File: ai_document.txt
+Exception: (<class 'pymongo.errors.ServerSelectionTimeoutError'>, ServerSelectionTimeoutError("localhost:27017: [Errno 61] Connection refused (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 686b686497f26f8ab5c33f66, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 61] Connection refused (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>"), <traceback object at 0x111c412c0>)
+Traceback (most recent call last):
+  File "/Users/himanshu4.goyal/My Projects/Customer_support_chatbot/routers/train_router.py", line 44, in train
+    self.mongo_utils.save_uploaded_document(
+  File "/Users/himanshu4.goyal/My Projects/Customer_support_chatbot/db/mongo_utils.py", line 26, in save_uploaded_document
+    result = self.docs_collection.insert_one(doc)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/collection.py", line 669, in insert_one
+    self._insert_one(
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/collection.py", line 609, in _insert_one
+    self.__database.client._retryable_write(acknowledged, _insert_command, session)
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1522, in _retryable_write
+    with self._tmp_session(session) as s:
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1840, in _tmp_session
+    s = self._ensure_session(session)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1823, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1766, in __start_session
+    self._topology._check_implicit_session_support()
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/topology.py", line 573, in _check_implicit_session_support
+    self._check_session_support()
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/topology.py", line 589, in _check_session_support
+    self._select_servers_loop(
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/topology.py", line 259, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: localhost:27017: [Errno 61] Connection refused (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 686b686497f26f8ab5c33f66, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 61] Connection refused (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+2025-07-07 11:56:41,588 - rag_api - ERROR - error:86 - DB: Failed to save document in 30.350s | User: test_user_123 | File: test_user_123_large_document.txt
+Exception: (<class 'pymongo.errors.ServerSelectionTimeoutError'>, ServerSelectionTimeoutError("localhost:27017: [Errno 61] Connection refused (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 686b688397f26f8ab5c33f68, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 61] Connection refused (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>"), <traceback object at 0x111b9e600>)
+Traceback (most recent call last):
+  File "/Users/himanshu4.goyal/My Projects/Customer_support_chatbot/db/mongo_utils.py", line 26, in save_uploaded_document
+    result = self.docs_collection.insert_one(doc)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/collection.py", line 669, in insert_one
+    self._insert_one(
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/collection.py", line 609, in _insert_one
+    self.__database.client._retryable_write(acknowledged, _insert_command, session)
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1522, in _retryable_write
+    with self._tmp_session(session) as s:
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1840, in _tmp_session
+    s = self._ensure_session(session)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1823, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1766, in __start_session
+    self._topology._check_implicit_session_support()
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/topology.py", line 573, in _check_implicit_session_support
+    self._check_session_support()
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/topology.py", line 589, in _check_session_support
+    self._select_servers_loop(
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/topology.py", line 259, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: localhost:27017: [Errno 61] Connection refused (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 686b688397f26f8ab5c33f68, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 61] Connection refused (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+2025-07-07 11:56:41,593 - rag_api - ERROR - error:86 - ROUTER: Training process failed for user test_user_123 in 30.355s | File: large_document.txt
+Exception: (<class 'pymongo.errors.ServerSelectionTimeoutError'>, ServerSelectionTimeoutError("localhost:27017: [Errno 61] Connection refused (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 686b688397f26f8ab5c33f68, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 61] Connection refused (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>"), <traceback object at 0x111b9ea40>)
+Traceback (most recent call last):
+  File "/Users/himanshu4.goyal/My Projects/Customer_support_chatbot/routers/train_router.py", line 44, in train
+    self.mongo_utils.save_uploaded_document(
+  File "/Users/himanshu4.goyal/My Projects/Customer_support_chatbot/db/mongo_utils.py", line 26, in save_uploaded_document
+    result = self.docs_collection.insert_one(doc)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/collection.py", line 669, in insert_one
+    self._insert_one(
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/collection.py", line 609, in _insert_one
+    self.__database.client._retryable_write(acknowledged, _insert_command, session)
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1522, in _retryable_write
+    with self._tmp_session(session) as s:
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1840, in _tmp_session
+    s = self._ensure_session(session)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1823, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1766, in __start_session
+    self._topology._check_implicit_session_support()
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/topology.py", line 573, in _check_implicit_session_support
+    self._check_session_support()
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/topology.py", line 589, in _check_session_support
+    self._select_servers_loop(
+  File "/Users/himanshu4.goyal/anaconda3/lib/python3.11/site-packages/pymongo/topology.py", line 259, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: localhost:27017: [Errno 61] Connection refused (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 686b688397f26f8ab5c33f68, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: [Errno 61] Connection refused (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
